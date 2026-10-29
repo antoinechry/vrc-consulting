@@ -118,14 +118,26 @@ p{margin:0}
 .field-xp{display:flex;flex-direction:column;gap:28px;padding-top:16px;border-top:1px solid #E6E2D8}
 .field-xp-head{display:flex;flex-direction:column;gap:8px;max-width:680px;padding-top:32px}
 .field-xp-head h3{font-size:clamp(26px, 3vw, 32px)}
-.missions{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:20px}
-.mission{display:flex;gap:20px;align-items:flex-start;background:#fff;padding:28px;border-left:2px solid var(--gold);box-shadow:0 1px 3px rgba(11,29,54,.06);transition:transform .35s ease, box-shadow .35s ease}
-.mission:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,29,54,.12)}
-.mission-ico{flex-shrink:0;width:52px;height:52px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center}
-.mission-body{display:flex;flex-direction:column;gap:8px;min-width:0}
-.mission h4{margin:0;font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.2}
-.mission p{font-size:15px;color:var(--muted)}
-.mission .mission-where{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--bronze)}
+.poles{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:24px}
+.pole{padding:clamp(26px, 3.5vw, 40px);display:flex;flex-direction:column;gap:24px;transition:transform .35s ease, box-shadow .35s ease}
+.pole:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,29,54,.16)}
+.pole-strat{background:var(--navy);color:#fff;border-top:2px solid var(--gold)}
+.pole-ops{background:#fff;border-top:2px solid var(--gold);box-shadow:0 1px 3px rgba(11,29,54,.08)}
+.pole-head{display:flex;align-items:center;gap:16px;padding-bottom:20px;border-bottom:1px solid rgba(198,162,94,.45)}
+.pole-ico{flex-shrink:0;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.pole-strat .pole-ico{border:1.5px solid var(--gold);color:var(--gold)}
+.pole-ops .pole-ico{background:var(--navy);color:var(--gold)}
+.pole-kicker{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bronze)}
+.pole-strat .pole-kicker{color:var(--gold)}
+.pole h4{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(30px, 3.4vw, 38px);line-height:1.1}
+.pole-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.pole-list li{display:flex;flex-direction:column;gap:4px;padding-left:20px;position:relative}
+.pole-list li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;transform:rotate(45deg);background:var(--gold)}
+.pole-list strong{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.25}
+.pole-list span{font-size:15px;color:var(--muted)}
+.pole-strat .pole-list span{color:var(--on-navy)}
+.pole-list em{font-style:normal;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--bronze)}
+.pole-strat .pole-list em{color:var(--gold)}
 
 /* Dividers */
 .divider{display:block;width:100%}
@@ -259,9 +271,7 @@ p{margin:0}
   .cards{grid-template-columns:1fr}
   .cards .card:last-child{grid-column:auto}
   .card{padding:28px 24px}
-  .missions{grid-template-columns:1fr}
-  .mission{padding:22px 20px;gap:16px}
-  .mission-ico{width:44px;height:44px}
+  .poles{grid-template-columns:1fr}
   .pillars{grid-template-columns:1fr}
   .timeline ol{grid-template-columns:1fr;gap:0;padding-left:28px;border-left:2px solid var(--gold)}
   .step{flex-direction:column;padding:0 0 28px;position:relative}
@@ -398,40 +408,32 @@ p{margin:0}
     <div class="field-xp">
       <div class="field-xp-head rv">
         <h3>Ce que j’ai fait sur le terrain</h3>
-        <p class="lead">Ces expertises viennent de 30 ans de missions concrètes, dans le recrutement puis la formation professionnelle.</p>
+        <p class="lead">30 ans de missions, entre vision stratégique et pilotage opérationnel, dans le recrutement puis la formation professionnelle.</p>
       </div>
-      <div class="missions">
-        <article class="mission rv">
-          <span class="mission-ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-6h6v6"/></svg></span>
-          <div class="mission-body">
-            <h4>Créer et développer des agences</h4>
-            <p>Création d’agences à Lyon et Chambéry, ouverture de nouvelles agences à Lyon et dans sa région, développement d’une marque sur un nouveau territoire.</p>
-            <p class="mission-where">Groupe Proman · Traveco Recrutement</p>
+      <div class="poles">
+        <article class="pole pole-strat rv">
+          <div class="pole-head">
+            <span class="pole-ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
+            <div><p class="pole-kicker">Vision &amp; développement</p><h4>Stratégie</h4></div>
           </div>
+          <ul class="pole-list">
+            <li><strong>Développement territorial</strong><span>Création d’agences à Lyon et Chambéry, ouverture de nouvelles agences à Lyon et dans sa région.</span></li>
+            <li><strong>Développement de marque</strong><span>Implantation et développement d’une marque sur de nouveaux territoires, notamment dans le BTP.</span></li>
+            <li><strong>Conquête de nouveaux marchés</strong><span>Accompagner les équipes commerciales dans la conquête de nouveaux marchés.</span></li>
+            <li><strong>Développement régional</strong><span>Responsable du développement Rhône-Alpes d’un organisme de formation.</span></li>
+          </ul>
         </article>
-        <article class="mission rv">
-          <span class="mission-ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3 3 0 0 1 0 5.5"/><path d="M18 14c2 .7 3 2.8 3 6"/></svg></span>
-          <div class="mission-body">
-            <h4>Diriger et animer des équipes</h4>
-            <p>Responsable d’agences et de secteur depuis 1995&nbsp;: direction d’agence, animation des collaborateurs et accompagnement de leur réussite au quotidien.</p>
-            <p class="mission-where">Vediorbis · Traveco · Groupe Proman</p>
+        <article class="pole pole-ops rv">
+          <div class="pole-head">
+            <span class="pole-ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></span>
+            <div><p class="pole-kicker">Terrain &amp; résultats</p><h4>Opérationnel</h4></div>
           </div>
-        </article>
-        <article class="mission rv">
-          <span class="mission-ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-          <div class="mission-body">
-            <h4>Conquérir de nouveaux marchés</h4>
-            <p>D’attachée commerciale à responsable du développement&nbsp;: prospection, accompagnement des commerciaux dans la conquête de nouveaux clients, développement régional en Rhône-Alpes.</p>
-            <p class="mission-where">Vediorbis · Groupe Proman · ATSI</p>
-          </div>
-        </article>
-        <article class="mission rv">
-          <span class="mission-ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h6M8 11h6"/></svg></span>
-          <div class="mission-body">
-            <h4>Recruter, former, transmettre</h4>
-            <p>Près de 30 ans au cœur du recrutement et de l’emploi, puis de la formation professionnelle. Aujourd’hui&nbsp;: coaching individuel ou collectif et formations sur mesure.</p>
-            <p class="mission-where">Recrutement · ATSI · VRC Consulting</p>
-          </div>
+          <ul class="pole-list">
+            <li><strong>Direction d’agences</strong><span>Responsable d’agences et de secteur depuis 1995, à Vienne, Villefranche, Lyon, Saint-Bonnet-de-Mure et Chambéry.</span></li>
+            <li><strong>Animation des équipes</strong><span>Animer les collaborateurs et accompagner les commerciaux au quotidien, pour leur réussite.</span></li>
+            <li><strong>Prospection &amp; relation client</strong><span>Débuts comme attachée commerciale, puis près de 30 ans de développement commercial BtoB.</span></li>
+            <li><strong>Recrutement, formation &amp; coaching</strong><span>Recrutement au cœur du métier, puis formation professionnelle ; aujourd’hui coaching individuel ou collectif et formations sur mesure.</span></li>
+          </ul>
         </article>
       </div>
     </div>
