@@ -139,6 +139,36 @@ p{margin:0}
 .pole-list em{font-style:normal;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--bronze)}
 .pole-strat .pole-list em{color:var(--gold)}
 
+/* Actualités LinkedIn */
+.news{background:var(--cream);border-top:1px solid #E6E2D8}
+.news .wrap{display:flex;flex-direction:column;gap:36px;padding-top:var(--sec-y);padding-bottom:var(--sec-y)}
+.news-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.news-arrows{display:flex;gap:10px}
+.arrow{width:48px;height:48px;border:1px solid var(--navy);background:transparent;color:var(--navy);border-radius:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s ease, color .25s ease, transform .25s ease}
+.arrow:hover{background:var(--navy);color:var(--gold);transform:translateY(-2px)}
+.arrow-next{background:var(--navy);color:var(--gold)}
+.arrow:disabled{opacity:.35;cursor:default;transform:none}
+.posts{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px) / 3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none}
+.posts::-webkit-scrollbar{display:none}
+.post{scroll-snap-align:start;background:#fff;border-top:2px solid var(--gold);box-shadow:0 1px 3px rgba(11,29,54,.08);display:flex;flex-direction:column;transition:transform .35s ease, box-shadow .35s ease}
+.post:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,29,54,.14)}
+.post-head{padding:22px 24px 16px;display:flex;align-items:center;gap:12px}
+.post-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:16px;flex-shrink:0}
+.post-who{display:flex;flex-direction:column;line-height:1.3;flex-grow:1;min-width:0}
+.post-who strong{font-size:14px}
+.post-who span{font-size:12px;color:var(--muted-2)}
+.post-lines{padding:0 24px 16px;display:flex;flex-direction:column;gap:8px}
+.post-lines span{display:block;height:10px;background:#ECE8DF;border-radius:2px}
+.post-lines span:nth-child(2){width:92%}.post-lines span:nth-child(3){width:70%}
+.post-media{margin:0 24px;aspect-ratio:16/9;background:var(--navy-2);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-align:center;padding:12px}
+.post-foot{padding:16px 24px 22px;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px}
+.post-foot span{color:var(--muted-2)}
+.post-foot a{font-weight:600;text-decoration:none;white-space:nowrap}
+.post-foot span{min-width:0}
+.news-cta{display:flex;justify-content:center}
+.news-cta .btn{gap:10px}
+#linkedin-feed:empty{display:none}
+
 /* Dividers */
 .divider{display:block;width:100%}
 .divider-curve{height:clamp(48px, 7vw, 90px);background:var(--cream);margin-bottom:-1px}
@@ -245,6 +275,9 @@ p{margin:0}
   .timeline ol{grid-template-columns:repeat(3, minmax(0,1fr));row-gap:40px}
   .timeline-line{display:none}
 }
+@media (max-width: 1024px){
+  .posts{grid-auto-columns:calc((100% - 24px) / 2)}
+}
 @media (max-width: 880px){
   .burger{display:inline-flex}
   .nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--navy);border-bottom:1px solid var(--gold);padding:8px var(--pad-x) 20px;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .4s ease, opacity .3s ease, visibility .3s}
@@ -272,6 +305,9 @@ p{margin:0}
   .cards .card:last-child{grid-column:auto}
   .card{padding:28px 24px}
   .poles{grid-template-columns:1fr}
+  .posts{grid-auto-columns:86%;gap:16px}
+  .news-arrows{display:none}
+  .news-cta .btn{width:100%}
   .pillars{grid-template-columns:1fr}
   .timeline ol{grid-template-columns:1fr;gap:0;padding-left:28px;border-left:2px solid var(--gold)}
   .step{flex-direction:column;padding:0 0 28px;position:relative}
@@ -488,6 +524,71 @@ p{margin:0}
   </div>
 </section>
 
+<section class="news" id="actualites">
+  <div class="wrap">
+    <div class="news-head rv">
+      <div class="sec-head">
+        <p class="eyebrow">Actualités</p>
+        <h2 class="h2">Mes dernières publications</h2>
+        <span class="rule rv-line" aria-hidden="true"></span>
+        <p class="lead">Réflexions, retours d’expérience et actualités, publiés sur LinkedIn et mis à jour automatiquement ici.</p>
+      </div>
+      <div class="news-arrows">
+        <button type="button" class="arrow" data-dir="-1" aria-label="Publications précédentes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="arrow arrow-next" data-dir="1" aria-label="Publications suivantes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <!-- Widget LinkedIn (Elfsight, SociableKIT…) : coller son code dans #linkedin-feed
+         et supprimer le bloc .posts ci-dessous. -->
+    <div id="linkedin-feed"></div>
+    <div class="posts rv" id="posts" tabindex="0" aria-label="Publications LinkedIn">
+          <article class="post">
+            <div class="post-head">
+              <span class="post-avatar" aria-hidden="true">VRC</span>
+              <div class="post-who"><strong>Valérie Rouch Cornu</strong><span>[Date de publication]</span></div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <div class="post-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="post-media">[Publication LinkedIn]</div>
+            <div class="post-foot"><span>J’aime · Commentaires</span><a href="https://www.linkedin.com/in/valerie-rouch-cornu/recent-activity/all/" target="_blank" rel="noopener">Lire sur LinkedIn →</a></div>
+          </article>
+          <article class="post">
+            <div class="post-head">
+              <span class="post-avatar" aria-hidden="true">VRC</span>
+              <div class="post-who"><strong>Valérie Rouch Cornu</strong><span>[Date de publication]</span></div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <div class="post-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="post-media">[Publication LinkedIn]</div>
+            <div class="post-foot"><span>J’aime · Commentaires</span><a href="https://www.linkedin.com/in/valerie-rouch-cornu/recent-activity/all/" target="_blank" rel="noopener">Lire sur LinkedIn →</a></div>
+          </article>
+          <article class="post">
+            <div class="post-head">
+              <span class="post-avatar" aria-hidden="true">VRC</span>
+              <div class="post-who"><strong>Valérie Rouch Cornu</strong><span>[Date de publication]</span></div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <div class="post-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="post-media">[Publication LinkedIn]</div>
+            <div class="post-foot"><span>J’aime · Commentaires</span><a href="https://www.linkedin.com/in/valerie-rouch-cornu/recent-activity/all/" target="_blank" rel="noopener">Lire sur LinkedIn →</a></div>
+          </article>
+          <article class="post">
+            <div class="post-head">
+              <span class="post-avatar" aria-hidden="true">VRC</span>
+              <div class="post-who"><strong>Valérie Rouch Cornu</strong><span>[Date de publication]</span></div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <div class="post-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="post-media">[Publication LinkedIn]</div>
+            <div class="post-foot"><span>J’aime · Commentaires</span><a href="https://www.linkedin.com/in/valerie-rouch-cornu/recent-activity/all/" target="_blank" rel="noopener">Lire sur LinkedIn →</a></div>
+          </article>
+    </div>
+    <div class="news-cta rv">
+      <a href="https://www.linkedin.com/in/valerie-rouch-cornu/" class="btn btn-navy" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span>Suivre Valérie sur LinkedIn</span></a>
+    </div>
+  </div>
+</section>
+
 <section class="band on-navy" aria-label="Prendre contact">
   <svg class="ring spin-rev" aria-hidden="true" width="520" height="520" viewBox="0 0 200 200" style="right:-160px;top:-200px;opacity:.18"><circle cx="100" cy="100" r="96" fill="none" stroke="#C6A25E" stroke-width="0.6" stroke-dasharray="60 20"/></svg>
   <div class="wrap rv">
@@ -603,6 +704,22 @@ p{margin:0}
     });
   } else {
     targets.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // Carrousel des publications
+  var posts = document.getElementById('posts');
+  if(posts){
+    var arrows = document.querySelectorAll('.news .arrow');
+    function step(){ var c = posts.querySelector('.post'); return c ? c.getBoundingClientRect().width + 24 : 300; }
+    function sync(){
+      var max = posts.scrollWidth - posts.clientWidth - 2;
+      arrows[0].disabled = posts.scrollLeft <= 2;
+      arrows[1].disabled = posts.scrollLeft >= max;
+    }
+    arrows.forEach(function(a){ a.addEventListener('click', function(){ posts.scrollBy({ left: step() * Number(a.dataset.dir), behavior: 'smooth' }); }); });
+    posts.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
   }
 
   // Formulaire : Particulier / Entreprise
